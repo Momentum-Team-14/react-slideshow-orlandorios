@@ -14,17 +14,18 @@ const Slideshow = () => {
         if(index > lastIndex) {
             setIndex(0);
         }
-    }, [index, filmData]);
+    }, [index, filmData])
 
     useEffect(() => {
-        let slider = setInterval(() => {
-            setIndex(index +1)
-        }, 5000);
-        return () => {
-            clearInterval(slider)
+        const nextIndex = filmData.length + 1;
+        if(index < 0) {
+            setIndex(nextIndex);
         }
-    })
-
+        if(index > nextIndex) {
+            setIndex(0);
+        }
+    }, [index, filmData])
+    
     return (
         <section className="section">
             <div className="test">
@@ -35,7 +36,7 @@ const Slideshow = () => {
                     const {id, title, original_title, image, description} = info;
                     let position = "nextSlide";
                     if(indexMovie === index) {
-                        position = "activeSlide";
+                        position = "currentSlide";
                     }
                     if(
                         indexMovie === index - 1 || 
