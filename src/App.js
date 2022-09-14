@@ -1,10 +1,11 @@
 import './App.css'
-import { filmData } from './film-data'
+import Slideshow from './Slideshow.js'
+import {useState, useEffect} from 'react'
 
 function App() {
   return (
-    <div className="slides-app">
-      <h1>Your Slideshow</h1>
+    <div className="slides">
+      <Slideshow />
     </div>
   )
 }
